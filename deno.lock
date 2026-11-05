@@ -1,8 +1,26 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@std/dotenv@~0.225.5": "0.225.8",
+    "jsr:@std/internal@^1.0.14": "1.0.14",
+    "jsr:@std/path@^1.1.2": "1.1.6",
     "npm:@types/nodemailer@*": "7.0.11",
-    "npm:nodemailer@*": "8.0.7"
+    "npm:nodemailer@*": "10.3.1",
+    "npm:nodemailer@10.3.1": "10.3.1"
+  },
+  "jsr": {
+    "@std/dotenv@0.225.8": {
+      "integrity": "27b8c1a9d00cbf938345a5924487c04d9b27bdd7e7bd1983f54bcf76d0a0174a"
+    },
+    "@std/internal@1.0.14": {
+      "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
+    },
+    "@std/path@1.1.6": {
+      "integrity": "c68485c2a4dfbb5ae3cc74fae4e8c4e5d874cf8a8ed12927917235c758b46cbe",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    }
   },
   "npm": {
     "@types/node@25.5.0": {
@@ -17,8 +35,8 @@
         "@types/node"
       ]
     },
-    "nodemailer@8.0.7": {
-      "integrity": "sha512-pkjE4mkBzQjdJT4/UmlKl3pX0rC9fZmjh7c6C9o7lv66Ac6w9WCnzPzhbPNxwZAzlF4mdq4CSWB5+FbK6FWCow=="
+    "nodemailer@10.3.1": {
+      "integrity": "sha512-uF0AFsJC07Y1vdW7p580DKAnh7rAO+4UPSSB3mDCPNDufoiaOebV6JmrzpxB14OjEEEiBsNdYoM2Y+fN8M7BBA=="
     },
     "undici-types@7.18.2": {
       "integrity": "sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w=="
@@ -110,7 +128,9 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:nodemailer@8"
+      "jsr:@std/dotenv@~0.225.5",
+      "jsr:@std/path@^1.1.2",
+      "npm:nodemailer@10.3.1"
     ]
   }
 }

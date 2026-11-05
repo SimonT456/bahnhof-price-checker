@@ -1,4 +1,4 @@
-FROM denoland/deno:alpine
+FROM denoland/deno:alpine-2.9.8
 
 RUN apk add --no-cache jq curl apprise
 

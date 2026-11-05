@@ -3,8 +3,8 @@
     "dev": "deno run --watch --allow-env --allow-read --allow-run --allow-net --allow-sys main.ts"
   },
   "imports": {
-    "nodemailer": "npm:nodemailer@8",
-    "std/dotenv": "https://deno.land/std@0.211.0/dotenv/mod.ts",
-    "std/path": "https://deno.land/std@0.211.0/path/mod.ts"
+    "nodemailer": "npm:nodemailer@10.3.1",
+    "std/dotenv": "jsr:@std/dotenv@^0.225.5",
+    "std/path": "jsr:@std/path@^1.1.2"
   }
 }

@@ -6,3 +6,5 @@ cookiejar
 .DS_Store
 
 .env
+
+*.code-workspace
