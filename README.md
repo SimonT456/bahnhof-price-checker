@@ -59,13 +59,38 @@ sent.
 
 ### Call shell scripts directly
 
-Clone the repo and just call comparePrice.sh with your current speed, price and address.
+Clone the repo and just call comparePrices.sh with your current speed, price and address.
 No notification will be sent using this method.
 
-Requires jq, cURL and Sed.
+Requires jq, cURL, Sed and Deno (already included in the Docker image).
+
+The price lookup solves Bahnhof's PBKDF2 ALTCHA proof of work locally and retries
+each challenged request once using the same cookies. Challenges expire and solving
+is limited to 90 seconds. HTTP, challenge and response errors exit with status 1;
+an address without coverage exits with status 2.
+
+Prices are the recurring `prices.regularPrice` values, excluding temporary
+promotions and setup fees. Only speeds currently offered for the address are listed.
+
+To build the local scripts with Compose, save your `compose.yaml` in the repository
+folder containing `Dockerfile` and add `build: .` to your service:
+
+```yaml
+services:
+  bahnhof-price-checker:
+    build: .
+    image: bahnhof-price-checker:local
+    # Keep your existing environment, container_name and restart settings.
+```
+
+From that same folder, rebuild the image and recreate the container:
 
 ```console
-$ ./comparePrice.sh 500/100 459 "Rådhusgatan 5, 590 37 Kisa, Sweden"
+docker compose up -d --build --force-recreate
+```
+
+```console
+$ ./comparePrices.sh 500/100 459 "Rådhusgatan 5, 590 37 Kisa, Sweden"
 The current price for 500/100 is 359 SEK which is lower than what you are paying.
 ```
 
